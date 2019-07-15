@@ -26,6 +26,8 @@ Uma: Management Application
 
 - Create a database. As an example a Docker Compose file is provided.
   The file defines a PostgreSQL container.
+  It also defines and Adminer container which you can access on port `8080`.
+  The server name of the PostgreSQL container is `db`.
 
 - Create the local settings of your project in `project/settings/local.py`.
   The file `local-example.py` can serve you as an example.
