@@ -1,4 +1,4 @@
-from .room_category import RoomCategory
+from .roomcategory import RoomCategory
 from django.db import models
 
 

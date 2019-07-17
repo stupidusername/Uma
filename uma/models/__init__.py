@@ -1,2 +1,2 @@
 from .room import Room
-from .room_category import RoomCategory
+from .roomcategory import RoomCategory
