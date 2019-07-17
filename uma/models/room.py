@@ -1,8 +1,9 @@
 from .roomcategory import RoomCategory
 from django.db import models
+from safedelete.models import SafeDeleteModel
 
 
-class Room(models.Model):
+class Room(SafeDeleteModel):
     """
     Room model.
     """
@@ -11,7 +12,7 @@ class Room(models.Model):
     category = models.ForeignKey(
         RoomCategory,
         related_name='rooms',
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
 
     def __str__(self):

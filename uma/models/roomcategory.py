@@ -1,7 +1,8 @@
 from django.db import models
+from safedelete.models import SafeDeleteModel
 
 
-class RoomCategory(models.Model):
+class RoomCategory(SafeDeleteModel):
     """
     Room category model.
     """
