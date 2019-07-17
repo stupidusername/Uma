@@ -8,12 +8,14 @@ BASE_DIR = os.path.dirname(
 
 INSTALLED_APPS = [
     'uma.apps.UmaConfig',
+    'baton',  # Needs to be placed before the admin app.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+    'baton.autodiscover'  # Needs to be placed at the end of the list.
 ]
 
 MIDDLEWARE = [
