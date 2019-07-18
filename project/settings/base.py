@@ -1,4 +1,5 @@
 import os
+import uma
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
@@ -83,3 +84,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Baton configuration.
+# See https://django-baton.readthedocs.io/en/latest/configuration.html
+BATON = {
+    'SITE_HEADER': uma.APP_NAME,
+    'SITE_TITLE': uma.APP_NAME,
+    'SUPPORT_HREF': None,
+    'COPYRIGHT': None,
+    'POWERED_BY': None
+}
