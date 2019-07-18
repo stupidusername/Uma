@@ -38,7 +38,7 @@ Uma: Management Application
     $ python manage.py migrate
     ```
 
-- (Optional) Create a super user for the admin panel.
+- Create a super user for the admin panel.
 
     ```
     $ python manage.py createsuperuser
