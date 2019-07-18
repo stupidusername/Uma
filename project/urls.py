@@ -11,9 +11,17 @@ urlpatterns = [
     path('baton/', include('baton.urls')),
 ]
 
-# Add the Debug Toolbar’s URLs.
+# URL patters for development environments.
 if settings.DEBUG:
+
     import debug_toolbar
-    urlpatterns = [
-            path('__debug__/', include(debug_toolbar.urls))
-        ] + urlpatterns
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+    debug_urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls))
+    ]
+    debug_urlpatterns += \
+        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += debug_urlpatterns

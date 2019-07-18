@@ -2,13 +2,13 @@ from django.db import models
 from safedelete.models import SafeDeleteModel
 
 
-class RoomCategory(SafeDeleteModel):
+class ArticleCategory(SafeDeleteModel):
     """
-    Room category model.
+    ArticleCategory model.
     """
 
     class Meta:
-        verbose_name_plural = 'room categories'
+        verbose_name_plural = 'article categories'
 
     name = models.CharField(max_length=100, unique=True)
 

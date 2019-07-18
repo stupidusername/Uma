@@ -2,10 +2,11 @@ import os
 import uma
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Application definition
+# Application definition.
 
 INSTALLED_APPS = [
     'uma.apps.UmaConfig',
@@ -50,7 +51,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-# Password validation
+# Password validation.
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -68,7 +69,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# Internationalization.
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -81,13 +82,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images).
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# Media files (upload by the user).
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Baton configuration.
-# See https://django-baton.readthedocs.io/en/latest/configuration.html
+# https://django-baton.readthedocs.io/en/latest/configuration.html
+
 BATON = {
     'SITE_HEADER': uma.APP_NAME,
     'SITE_TITLE': uma.APP_NAME,
