@@ -11,6 +11,7 @@ BASE_DIR = os.path.dirname(
 INSTALLED_APPS = [
     'uma.apps.UmaConfig',
     'baton',  # Needs to be placed before the admin app.
+    'djmoney',  # Support for money fields.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
