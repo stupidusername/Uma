@@ -83,6 +83,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+CURRENCIES = ['ARS']  # Restrict the currencies listed on the project.
+
 DEFAULT_CURRENCY = 'ARS'
 
 # Static files (CSS, JavaScript, Images).

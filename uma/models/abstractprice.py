@@ -18,4 +18,4 @@ class AbstractPrice(SafeDeleteModel):
         max_digits=10,
         validators=[MinMoneyValidator(0)]
     )
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
