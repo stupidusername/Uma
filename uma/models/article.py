@@ -14,6 +14,7 @@ class Article(SafeDeleteModel):
         related_name='articles',
         on_delete=models.CASCADE
     )
+    public = models.BooleanField()
     description = models.TextField(blank=True)
     picture = models.ImageField(blank=True, upload_to='articles')
 
