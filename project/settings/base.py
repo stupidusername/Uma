@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'alteradmin.apps.AlterAdminConfig',  # After admin models are registered.
+    'channels',
     'baton.autodiscover'  # Needs to be placed at the end of the list.
 ]
 
@@ -107,3 +108,8 @@ BATON = {
     'COPYRIGHT': None,
     'POWERED_BY': None
 }
+
+# Set your ASGI_APPLICATION setting to point to that routing object as your
+# root application.
+
+ASGI_APPLICATION = "project.routing.application"
