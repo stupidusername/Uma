@@ -1,7 +1,7 @@
 """
 Register models for the admin panel.
 """
-from .models.article import Article
+from .models.article import Article, ArticleComponent
 from .models.articlecategory import ArticleCategory
 from .models.articleprice import NonEditableArticlePrice
 from .models.holiday import Holiday
@@ -42,11 +42,20 @@ class ArticlePriceInline(AbstractPriceInline):
     model = NonEditableArticlePrice
 
 
+class ArticleComponentInline(admin.StackedInline):
+    """
+    Inline representation of an article component.
+    """
+    model = ArticleComponent
+    fk_name = 'parent'
+    extra = 0  # Don't show components forms by default.
+
+
 class ArticleAdmin(admin.ModelAdmin):
     """
     Representation of an article in the admin interface.
     """
-    inlines = [ArticlePriceInline]
+    inlines = [ArticlePriceInline, ArticleComponentInline]
 
 
 admin.site.register(Article, ArticleAdmin)
