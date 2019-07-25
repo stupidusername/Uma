@@ -6,7 +6,6 @@ from .models.articlecategory import ArticleCategory
 from .models.articleprice import NonEditableArticlePrice
 from .models.holiday import Holiday
 from .models.room import Room
-from .models.roomcategory import RoomCategory
 from django.contrib import admin
 from django.forms import BaseInlineFormSet
 
@@ -58,8 +57,8 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ArticlePriceInline, ArticleComponentInline]
 
 
+# Register admin interfaces.
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(ArticleCategory)
 admin.site.register(Holiday)
 admin.site.register(Room)
-admin.site.register(RoomCategory)
