@@ -9,6 +9,7 @@ Uma: Management Application
 - PyPI packages listed on `requirements.txt`
     - `django-debug-toolbar` is only needed if you enable debug mode
     - `psycopg2` is only needed if you are using PostgreSQL
+    - `pytest-asyncio` and `pytest-django` are only needed if you want to run the WebSocket tests
 - A RDMS supported by Django (tested on PostgreSQL 11.4)
 
 
@@ -47,9 +48,17 @@ Uma: Management Application
 
 ## Running tests
 
-```
-$ python manage.py test
-```
+- `unittest` tests:
+
+    ```
+    $ python manage.py test
+    ```
+
+- WebSocket tests:
+
+    ```
+    $ pytest
+    ```
 
 
 ## Running the development web server

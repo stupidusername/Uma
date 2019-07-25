@@ -8,10 +8,10 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('baton/', include('baton.urls')),
+    path('baton/', include('baton.urls'))
 ]
 
-# URL patters for development environments.
+# URL patterns for development environments.
 if settings.DEBUG:
 
     import debug_toolbar
