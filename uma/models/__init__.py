@@ -5,3 +5,4 @@ from .daytype import DayType
 from .holiday import Holiday
 from .room import Room
 from .roomcategory import RoomCategory
+from .roommode import RoomMode
