@@ -57,8 +57,30 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ArticlePriceInline, ArticleComponentInline]
 
 
+class RoomAdmin(admin.ModelAdmin):
+    """
+    Representation of an room in the admin interface.
+    """
+
+    def has_add_permission(self, request, obj=None):
+        """
+        See parent doc.
+
+        :returns bool:
+        """
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        """
+        See parent doc.
+
+        :returns bool:
+        """
+        return False
+
+
 # Register admin interfaces.
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(ArticleCategory)
 admin.site.register(Holiday)
-admin.site.register(Room)
+admin.site.register(Room, RoomAdmin)
