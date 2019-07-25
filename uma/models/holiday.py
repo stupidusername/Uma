@@ -10,7 +10,7 @@ class Holiday(SafeDeleteModel):
     """
 
     date = models.DateField(unique=True)
-    day_type = models.ForeignKey(DayType, null=True, on_delete=models.CASCADE)
+    day_type = models.ForeignKey(DayType, on_delete=models.CASCADE)
 
     def __str__(self):
         return formats.date_format(self.date)
