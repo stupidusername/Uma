@@ -6,3 +6,5 @@ from .holiday import Holiday
 from .room import Room
 from .roomcategory import RoomCategory
 from .roommode import RoomMode
+from .stay import Stay
+from .stayrate import StayRate
