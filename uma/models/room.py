@@ -18,8 +18,7 @@ class Room(SafeDeleteModel):
     mode = models.ForeignKey(
         RoomMode,
         related_name='rooms',
-        on_delete=models.CASCADE,
-        null=True
+        on_delete=models.CASCADE
     )
 
     def __str__(self):

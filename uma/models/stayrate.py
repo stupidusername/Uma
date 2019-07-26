@@ -13,8 +13,7 @@ class StayRate(AbstractPrice):
     category = models.ForeignKey(
         RoomCategory,
         related_name='rates',
-        on_delete=models.CASCADE,
-        null=True
+        on_delete=models.CASCADE
     )
     stay = models.ForeignKey(
         Stay,
