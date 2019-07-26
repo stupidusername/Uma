@@ -1,4 +1,5 @@
 from .roomcategory import RoomCategory
+from .roommode import RoomMode
 from django.db import models
 from safedelete.models import SafeDeleteModel
 
@@ -13,6 +14,12 @@ class Room(SafeDeleteModel):
         RoomCategory,
         related_name='rooms',
         on_delete=models.CASCADE
+    )
+    mode = models.ForeignKey(
+        RoomMode,
+        related_name='rooms',
+        on_delete=models.CASCADE,
+        null=True
     )
 
     def __str__(self):
