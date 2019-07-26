@@ -15,7 +15,13 @@ async def test_echo():
     communicator = WebsocketCommunicator(application, 'ws/sgh/')
     connected, subprotocol = await communicator.connect()
     assert connected
-    content = {'payload': 'test'}
+    message = 'Hello, friend.'
+    content = {
+        'jsonrpc': '2.0',
+        'method': 'Tests.Echo',
+        'id': 1,
+        'params': {'message': message}
+    }
     await communicator.send_json_to(content)
     response = await communicator.receive_json_from()
-    assert response == content
+    assert response['result'] == message
