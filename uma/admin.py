@@ -7,6 +7,8 @@ from .models.articleprice import NonEditableArticlePrice
 from .models.holiday import Holiday
 from .models.room import Room
 from .models.roomcategory import RoomCategory
+from .widgets.selectroommode import SelectRoomMode
+from django import forms
 from django.contrib import admin
 from django.forms import BaseInlineFormSet
 
@@ -58,12 +60,28 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ArticlePriceInline, ArticleComponentInline]
 
 
+class RoomForm(forms.ModelForm):
+    """
+    Custom form for the room model.
+    """
+
+    class Meta:
+        model = Room
+        # The name of the room should not be editable.
+        exclude = ['name']
+        # Use a custom widget for the room mode.
+        widgets = {
+            'mode': SelectRoomMode
+        }
+
+
 class RoomAdmin(admin.ModelAdmin):
     """
     Representation of an room in the admin interface.
     """
 
-    exclude = ['name']
+    # Use custom form.
+    form = RoomForm
 
     def has_add_permission(self, request, obj=None):
         """
