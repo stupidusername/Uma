@@ -6,6 +6,7 @@ from .models.articlecategory import ArticleCategory
 from .models.articleprice import NonEditableArticlePrice
 from .models.holiday import Holiday
 from .models.room import Room
+from .models.roomcategory import RoomCategory
 from django.contrib import admin
 from django.forms import BaseInlineFormSet
 
@@ -79,8 +80,31 @@ class RoomAdmin(admin.ModelAdmin):
         return False
 
 
+class RoomCategoryAdmin(admin.ModelAdmin):
+    """
+    Representation of a room category in the admin interface.
+    """
+
+    def has_add_permission(self, request, obj=None):
+        """
+        See parent doc.
+
+        :returns bool:
+        """
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        """
+        See parent doc.
+
+        :returns bool:
+        """
+        return False
+
+
 # Register admin interfaces.
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(ArticleCategory)
 admin.site.register(Holiday)
 admin.site.register(Room, RoomAdmin)
+admin.site.register(RoomCategory, RoomCategoryAdmin)
