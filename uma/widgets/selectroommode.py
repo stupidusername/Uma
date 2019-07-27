@@ -8,6 +8,8 @@ class SelectRoomMode(Select):
     description when an option is selected.
     """
 
+    template_name = 'widgets/select_room_mode.html'
+
     def get_context(self, name, value, attrs):
         """
         Add the room mode models to the context.
