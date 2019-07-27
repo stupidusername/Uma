@@ -63,6 +63,8 @@ class RoomAdmin(admin.ModelAdmin):
     Representation of an room in the admin interface.
     """
 
+    exclude = ['name']
+
     def has_add_permission(self, request, obj=None):
         """
         See parent doc.
