@@ -1,22 +1,16 @@
 from .abstractprice import AbstractPrice, NonEditablePriceMixin
-from .roomcategory import RoomCategory
-from .stay import Stay
+from .categorystay import CategoryStay
 from django.db import models
 
 
 class StayRate(AbstractPrice):
     """
     Stay rate model. This model is used to keep a record of the prices at a
-    given point in time. A stay rate is established for one room category.
+    given point in time.
     """
 
-    category = models.ForeignKey(
-        RoomCategory,
-        related_name='rates',
-        on_delete=models.CASCADE
-    )
-    stay = models.ForeignKey(
-        Stay,
+    category_stay = models.ForeignKey(
+        CategoryStay,
         related_name='rates',
         on_delete=models.CASCADE
     )
