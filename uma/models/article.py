@@ -39,6 +39,9 @@ class ArticleComponent(models.Model):
     articles of a child class are needed by a parent.
     """
 
+    class Meta:
+        unique_together = ['parent', 'child']
+
     parent = models.ForeignKey(
         Article,
         on_delete=models.CASCADE,
@@ -50,8 +53,6 @@ class ArticleComponent(models.Model):
         related_name='parent_article_components'
     )
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
-
-    unique_together = ['parent', 'child']
 
     def clean(self):
         """
