@@ -13,12 +13,14 @@ class Room(SafeDeleteModel):
     category = models.ForeignKey(
         RoomCategory,
         related_name='rooms',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
     mode = models.ForeignKey(
         RoomMode,
         related_name='rooms',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
 
     def __str__(self):
