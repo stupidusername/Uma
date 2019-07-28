@@ -1,5 +1,10 @@
+<!-- Include default select template. -->
 {% include 'django/forms/widgets/select.html' %}
 
+<!-- Mode description text. -->
+<div id="description_mode" class="readonly" style="margin-left: 1rem; white-space: pre-wrap;"></div>
+
+<!-- This script updates the description when a selection is made. -->
 <script type="text/javascript">
     (function() {
 
@@ -33,7 +38,9 @@
                     }
                 });
             }
-            // TODO: Show the description.
+            // Show the description.
+            let descriptionDiv = document.getElementById('description_mode');
+            descriptionDiv.innerHTML = description;
         }
 
         // Register callback for the select mode input.
