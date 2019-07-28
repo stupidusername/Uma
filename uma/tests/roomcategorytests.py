@@ -1,6 +1,7 @@
 from ..models.categorystay import CategoryStay
 from ..models.roomcategory import RoomCategory
 from ..models.stay import Stay
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 
@@ -41,3 +42,16 @@ class RoomCategoryTests(TestCase):
         category.stays.add(stay_2)
         self.assertEqual(CategoryStay.objects.count(), 2)
         self.assertEqual(CategoryStay.all_objects.count(), 3)
+
+        # At this point there category-stay rows. One for stay_1 and two for
+        # stay_2 (one of them is marked as deleted). We now proceed to test the
+        # model validation.
+
+        # A duplication of stay_1 should not be possible.
+        category_stay_1 = CategoryStay(category=category, stay=stay_1)
+        with self.assertRaises(ValidationError):
+            category_stay_1.full_clean()
+
+        # But if we remove it first, no validation error should arise.
+        category.stays.remove(stay_1)
+        category_stay_1.full_clean()
