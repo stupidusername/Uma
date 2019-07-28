@@ -1,1 +1,42 @@
-{% include 'django/forms/widgets/select.html' %}    
+{% include 'django/forms/widgets/select.html' %}
+
+<script type="text/javascript">
+    (function() {
+
+        // Select input for the room mode.
+        let modeSelect = document.getElementById('id_mode');
+
+        // Array of room modes.
+        let roomModes = [];
+
+        // Add each room mode to the array.
+        {% for room_mode in room_modes %}
+            roomModes.push({
+                id: {{ room_mode.id }},
+                description: '{{ room_mode.description|escapejs }}'
+            })
+        {% endfor %}
+
+        // This functions shows the description of the selected room mode.
+        var showDescription = function() {
+            // Default value in case the room mode is not found on the list.
+            let description = "";
+            let selectId = modeSelect.value;
+            // selectId may be empty if the placeholder gets selected.
+            if (selectId) {
+                // The select value is always a string. Get its int value.
+                let selectIdInt = parseInt(selectId);
+                // Search the selected id.
+                roomModes.forEach(function(roomMode) {
+                    if (roomMode.id === selectIdInt) {
+                        description = roomMode.description;
+                    }
+                });
+            }
+            // TODO: Show the description.
+        }
+
+        // Register callback for the select mode input.
+        modeSelect.onchange = showDescription;
+    })();
+</script>
