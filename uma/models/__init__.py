@@ -1,6 +1,7 @@
 from .article import Article
 from .articlecategory import ArticleCategory
 from .articleprice import ArticlePrice
+from .categorystay import CategoryStay
 from .daytype import DayType
 from .holiday import Holiday
 from .room import Room

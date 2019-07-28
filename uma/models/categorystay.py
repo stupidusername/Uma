@@ -1,0 +1,17 @@
+from .roomcategory import RoomCategory
+from .stay import Stay
+from django.db import models
+from safedelete.models import SafeDeleteModel
+
+
+class CategoryStay(SafeDeleteModel):
+    """
+    Many-to-many relationship between room categories and stays. A pair
+    category-stay must be unique. Deleted category-stay relationships must be
+    left out from this validation.
+    """
+
+    unique_together = ['category', 'stay']
+
+    category = models.ForeignKey(RoomCategory, on_delete=models.CASCADE)
+    stay = models.ForeignKey(Stay, on_delete=models.CASCADE)

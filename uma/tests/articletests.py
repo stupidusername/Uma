@@ -6,7 +6,7 @@ from django.test import TestCase
 
 class ArticleTests(TestCase):
     """
-    Test for the article model.
+    Tests for the article model.
     """
 
     def test_circular_component_validation(self):
