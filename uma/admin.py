@@ -105,6 +105,9 @@ class RoomCategoryAdmin(admin.ModelAdmin):
     Representation of a room category in the admin interface.
     """
 
+    # The name of the room category should not be editable.
+    exclude = ['name']
+
     def has_add_permission(self, request, obj=None):
         """
         See parent doc.
