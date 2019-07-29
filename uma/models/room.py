@@ -14,12 +14,14 @@ class Room(SafeDeleteModel):
         RoomCategory,
         related_name='rooms',
         on_delete=models.CASCADE,
+        blank=True,
         null=True
     )
     mode = models.ForeignKey(
         RoomMode,
         related_name='rooms',
         on_delete=models.CASCADE,
+        blank=True,
         null=True
     )
 
