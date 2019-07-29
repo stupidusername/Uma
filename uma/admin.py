@@ -83,6 +83,12 @@ class RoomAdmin(admin.ModelAdmin):
     # Use custom form.
     form = RoomForm
 
+    # Show the name of the room as a read-only field. The fields attribute
+    # needs to be defined to alter the order of ther fields. The name of the
+    # room would be shown last otherwise.
+    fields = ['name', 'category', 'mode']
+    readonly_fields = ['name']
+
     def has_add_permission(self, request, obj=None):
         """
         See parent doc.
