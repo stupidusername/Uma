@@ -111,8 +111,11 @@ class RoomCategoryAdmin(admin.ModelAdmin):
     Representation of a room category in the admin interface.
     """
 
-    # The name of the room category should not be editable.
-    exclude = ['name']
+    # Show the name of the category as a read-only field. The fields attribute
+    # needs to be defined to alter the order of ther fields. The name of the
+    # room would be shown last otherwise.
+    fields = ['name']
+    readonly_fields = ['name']
 
     def has_add_permission(self, request, obj=None):
         """
