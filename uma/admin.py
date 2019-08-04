@@ -4,6 +4,7 @@ Register models for the admin panel.
 from .models.article import Article, ArticleComponent
 from .models.articlecategory import ArticleCategory
 from .models.articleprice import NonEditableArticlePrice
+from .models.categorystay import CategoryStay
 from .models.holiday import Holiday
 from .models.room import Room
 from .models.roomcategory import RoomCategory
@@ -106,6 +107,14 @@ class RoomAdmin(admin.ModelAdmin):
         return False
 
 
+class CategoryStayAdmin(admin.StackedInline):
+    """
+    Representation of an category-stay relationship in the admin interface.
+    """
+    model = CategoryStay
+    extra = 0  # Don't show components forms by default.
+
+
 class RoomCategoryAdmin(admin.ModelAdmin):
     """
     Representation of a room category in the admin interface.
@@ -116,6 +125,8 @@ class RoomCategoryAdmin(admin.ModelAdmin):
     # room would be shown last otherwise.
     fields = ['name']
     readonly_fields = ['name']
+
+    inlines = [CategoryStayAdmin]
 
     def has_add_permission(self, request, obj=None):
         """
