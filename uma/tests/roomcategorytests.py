@@ -23,25 +23,12 @@ class RoomCategoryTests(TestCase):
         # Add stays to the category.
         category.stays.add(stay_1)
         category.stays.add(stay_2)
-        self.assertEqual(CategoryStay.objects.count(), 2)
-
-        # Duplicating an stay should not be possible.
-        stay_1_duplicated = Stay.objects.get(pk=stay_1.pk)
-        category.stays.add(stay_1_duplicated)
-        # There should only be two rows.
-        self.assertEqual(CategoryStay.objects.count(), 2)
 
         # Deleting an stay should mark it as deleted but the row should not be
         # deleted from the DB.
         category.stays.remove(stay_2)
         self.assertEqual(CategoryStay.objects.count(), 1)
         self.assertEqual(CategoryStay.all_objects.count(), 2)
-
-        # Re-adding the deleted stay should work, but lefting the deleted
-        # record untouched.
-        category.stays.add(stay_2)
-        self.assertEqual(CategoryStay.objects.count(), 2)
-        self.assertEqual(CategoryStay.all_objects.count(), 3)
 
         # At this point there category-stay rows. One for stay_1 and two for
         # stay_2 (one of them is marked as deleted). We now proceed to test the
