@@ -12,7 +12,8 @@ class CategoryStay(SafeDeleteModel):
     left out from this validation.
     """
 
-    unique_together = ['category', 'stay']
+    class Meta:
+        unique_together = ['category', 'stay']
 
     category = models.ForeignKey(RoomCategory, on_delete=models.CASCADE)
     stay = models.ForeignKey(Stay, on_delete=models.CASCADE)
@@ -20,7 +21,7 @@ class CategoryStay(SafeDeleteModel):
     def clean(self):
         """
         See parent doc. Validates that a pair category-stat is unique without
-        taking into account record that were marked as deleted.
+        taking into account records that were marked as deleted.
 
         :raises ValidationError:
         """

@@ -37,8 +37,8 @@ class RoomCategoryTests(TestCase):
         self.assertEqual(CategoryStay.objects.count(), 1)
         self.assertEqual(CategoryStay.all_objects.count(), 2)
 
-        # Re-adding the deleted say should work, but lefting the deleted record
-        # untouched.
+        # Re-adding the deleted stay should work, but lefting the deleted
+        # record untouched.
         category.stays.add(stay_2)
         self.assertEqual(CategoryStay.objects.count(), 2)
         self.assertEqual(CategoryStay.all_objects.count(), 3)
