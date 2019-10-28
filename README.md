@@ -66,3 +66,10 @@ Uma: Management Application
 ```
 $ python manage.py runserver
 ```
+
+Uma uses [huey](https://huey.readthedocs.io/en/latest/index.html) to run
+asynchronous tasks. You need to start the huey consumer:
+
+```
+$ python manage.py run_huey
+```
