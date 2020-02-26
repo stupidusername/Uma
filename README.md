@@ -18,7 +18,6 @@ Uma: Management Application
 - Check prerequisites that need to be met in order to install `psycopg2`.
   See [build prerequisites](http://initd.org/psycopg/docs/install.html#build-prerequisites).
 
-
 - Install PyPI packages.
 
     ```
