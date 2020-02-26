@@ -20,7 +20,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alteradmin.apps.AlterAdminConfig',  # After admin models are registered.
     'channels',
-    'huey.contrib.djhuey',
     'baton.autodiscover'  # Needs to be placed at the end of the list.
 ]
 
