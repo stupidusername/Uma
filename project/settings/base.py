@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+    'django_db_logger',
     'alteradmin.apps.AlterAdminConfig',  # After admin models are registered.
     'channels',
     'baton.autodiscover'  # Needs to be placed at the end of the list.
@@ -113,3 +114,29 @@ BATON = {
 # root application.
 
 ASGI_APPLICATION = "project.routing.application"
+
+# Logging configuration.
+# Add DB logging for SGH operations.
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        }
+    },
+    'handlers': {
+        'db_log': {
+            'level': 'DEBUG',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
+            'formatter': 'simple'
+        }
+    },
+    'loggers': {
+        'uma.consumers.SGHConsumer': {
+            'handlers': ['db_log'],
+            'level': 'INFO'
+        }
+    }
+}

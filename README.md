@@ -20,7 +20,8 @@ Uma: Management Application
 
 - Install PyPI packages.
 
-    ```
+    ```bash
+    $ pip install wheel
     $ pip install -r requirements.txt
     ```
 
@@ -34,13 +35,13 @@ Uma: Management Application
 
 - Run migrations.
 
-    ```
+    ```bash
     $ python manage.py migrate
     ```
 
 - Create a super user for the admin panel.
 
-    ```
+    ```bash
     $ python manage.py createsuperuser
     ```
 
@@ -49,19 +50,19 @@ Uma: Management Application
 
 - `unittest` tests:
 
-    ```
+    ```bash
     $ python manage.py test
     ```
 
 - WebSocket tests:
 
-    ```
+    ```bash
     $ pytest
     ```
 
 
 ## Running the development web server
 
-```
+```bash
 $ python manage.py runserver
 ```
