@@ -116,7 +116,9 @@ BATON = {
 ASGI_APPLICATION = "project.routing.application"
 
 # Logging configuration.
-# Add DB logging for SGH operations.
+# All SGHConsummer log records will be saved to the DB.
+# Only those log records from django.channels.server that start with
+# "WebSocket" will be saved to the DB.
 
 LOGGING = {
     'version': 1,
@@ -126,17 +128,37 @@ LOGGING = {
             'format': '%(levelname)s %(asctime)s %(message)s'
         }
     },
+    'filters': {
+        'is_websocket_action': {
+            '()': 'project.logging.StartsWithFilter',
+            'prefix': 'WebSocket'
+        },
+    },
     'handlers': {
-        'db_log': {
-            'level': 'DEBUG',
-            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
             'formatter': 'simple'
+        },
+        'db': {
+            'level': 'INFO',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+        },
+        'db_websocket_action': {
+            'level': 'INFO',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
+            'filters': ['is_websocket_action']
         }
     },
     'loggers': {
+        'django.channels.server': {
+            'level': 'DEBUG',
+            'handlers': ['db_websocket_action', 'console'],
+            'propagate': False
+        },
         'uma.consumers.SGHConsumer': {
-            'handlers': ['db_log'],
-            'level': 'INFO'
+            'level': 'DEBUG',
+            'handlers': ['db', 'console']
         }
     }
 }
