@@ -1,5 +1,6 @@
 from channels.generic.websocket import WebsocketConsumer
 from jsonrpc import JSONRPCResponseManager, dispatcher
+import logging
 
 
 class SGHConsumer(WebsocketConsumer):
@@ -8,6 +9,8 @@ class SGHConsumer(WebsocketConsumer):
     server. It implements the JSON-RPC protocol.
     """
 
+    _logger = logging.getLogger('uma.consumers.SGHConsumer')
+
     def accept(self, subprotocol=None):
         """
         Accepts an incoming socket.
@@ -15,6 +18,9 @@ class SGHConsumer(WebsocketConsumer):
         :param [None, str] subprotocol: Connection subprotocol (optional).
         """
         super().accept(subprotocol)
+        self._logger.info(
+            f"Accepted connection from {self.scope['client'][0]}."
+        )
 
     def receive(self, text_data=None, bytes_data=None):
         """
