@@ -1,5 +1,5 @@
 channels==2.2.0
-Django==2.2.10
+Django==2.2.13
 django-baton==1.5.6
 django-db-logger==0.1.7
 django-debug-toolbar==2.0
